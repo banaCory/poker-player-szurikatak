@@ -28,6 +28,9 @@ public class Player {
 
             if (game.getCommunity_cards().isEmpty()) {
                 if (myCards.get(0).getRank().equals(myCards.get(1).getRank())) {
+                    return game.getBig_blind() * 10;
+                }
+                if (Integer.parseInt(myCards.get(0).getRank()) + Integer.parseInt(myCards.get(1).getRank()) > 20) {
                     return game.getBig_blind() * 5;
                 }
             } else {
