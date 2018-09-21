@@ -48,8 +48,8 @@ public class PlayerData {
         return hole_cards;
     }
 
-    public void setHoleCards(final ArrayList<Card> holeCards) {
-        this.hole_cards = holeCards;
+    public void setHoleCards(final ArrayList<Card> hole_Cards) {
+        this.hole_cards = hole_Cards;
     }
 
     public String getVersion() {

@@ -7,6 +7,14 @@ public class Card {
 
     public void setRank(final String rank) {
         this.rank = rank;
+    }
+
+    public String getSuit() {
+        return suit;
+    }
+
+    public Integer getValue() {
+
         System.out.println("Rank: " + rank);
         try {
             value = Integer.parseInt(rank);
@@ -25,13 +33,7 @@ public class Card {
             }
         }
         System.out.println("Value: " + value);
-    }
 
-    public String getSuit() {
-        return suit;
-    }
-
-    public Integer getValue() {
         return value;
     }
 
