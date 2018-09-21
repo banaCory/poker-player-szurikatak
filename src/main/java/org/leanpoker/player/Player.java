@@ -28,7 +28,7 @@ public class Player {
 
             if (game.getCommunity_cards().isEmpty()) {
                 if (myCards.get(0).getRank().equals(myCards.get(1).getRank())) {
-                    return game.getSmall_blind() * 5;
+                    return game.getBig_blind() * 5;
                 }
             } else {
                 final ArrayList<Card> cardlist = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Player {
                 cardlist.addAll(myCards);
                 final Set<String> targetSet = new HashSet<>(cardlist.stream().map(card -> card.getRank()).collect(Collectors.toList()));
                 if (targetSet.size() < cardlist.size()) {
-                    return game.getCurrent_by_in() * 5;
+                    return game.getBig_blind() * 10;
                 }
             }
 
