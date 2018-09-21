@@ -7,6 +7,7 @@ public class Card {
 
     public void setRank(final String rank) {
         this.rank = rank;
+        System.out.println("Rank: " + rank);
         try {
             value = Integer.parseInt(rank);
         } catch (final NumberFormatException e) {
@@ -23,6 +24,7 @@ public class Card {
                 value = 13;
             }
         }
+        System.out.println("Value: " + value);
     }
 
     public String getSuit() {
@@ -43,7 +45,7 @@ public class Card {
 
     @Override
     public String toString() {
-    	// TODO Auto-generated method stub
-    	return "{\"rank\":\"" + rank + "\",\"suit\":\"" + suit + "\"}";
+        // TODO Auto-generated method stub
+        return "{\"rank\":\"" + rank + "\",\"suit\":\"" + suit + "\"}";
     }
 }

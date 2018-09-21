@@ -37,8 +37,8 @@ public class Player {
             System.out.println("Asztal: " + game.getCommunity_cards());
 
             if (game.getCommunity_cards().isEmpty()) {
-                if (myCards.get(0).getRank().equals(myCards.get(1).getRank())) {
-                    if (myCards.get(0).getValue() > 9) {
+                if (getRanking(myCards) > 0) {
+                    if (myCards.get(0).getValue() > 8) {
                         return playerMe.getStack();
                     } else {
                         return game.getBig_blind() * 10;
@@ -55,11 +55,9 @@ public class Player {
                 cardlist.addAll(game.getCommunity_cards());
                 cardlist.addAll(myCards);
                 final Set<String> targetSet = new HashSet<>(cardlist.stream().map(card -> card.getRank()).collect(Collectors.toList()));
-                if (targetSet.size() < cardlist.size()) {
+                if (getRanking(cardlist) > 1) {
                     return game.getBig_blind() * 10;
                 }
-                
-                getRanking(cardlist);
             }
 
             return 0;
@@ -72,63 +70,63 @@ public class Player {
 
     public static void showdown(final JsonElement game) {
     }
-    
-    
-    public static int getRanking(ArrayList<Card> cards) {
-    	
-    	StringBuilder sB = new StringBuilder();
+
+    public static int getRanking(final ArrayList<Card> cards) {
+
+        final StringBuilder sB = new StringBuilder();
         sB.append("cards=[");
-        sB.append(cards.stream().map(s->s.toString()).reduce("", (a,b) -> a.toString() + "," + b.toString()).substring(1));
+        sB.append(cards.stream().map(s -> s.toString()).reduce("", (a, b) -> a.toString() + "," + b.toString()).substring(1));
         sB.append("]");
-        
-		//String urlParameters  = "cards=[{\"rank\":\"5\",\"suit\":\"diamonds\"},{\"rank\":\"7\",\"suit\":\"diamonds\"},{\"rank\":\"7\",\"suit\":\"spades\"},{\"rank\":\"8\",\"suit\":\"diamonds\"},{\"rank\":\"9\",\"suit\":\"diamonds\"}]";
-		byte[] postData       = sB.toString().getBytes( StandardCharsets.UTF_8 );
-		int    postDataLength = postData.length;
-		String request        = "http://rainman.leanpoker.org/rank";
-		URL url;
-		try {
-			url = new URL( request );
-			HttpURLConnection conn= (HttpURLConnection) url.openConnection();           
-			conn.setDoOutput( true );
-			conn.setInstanceFollowRedirects( false );
-			conn.setRequestMethod( "POST" );
-			conn.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded"); 
-			conn.setRequestProperty( "charset", "utf-8");
-			conn.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
-			conn.setUseCaches( false );
-			try( DataOutputStream wr = new DataOutputStream( conn.getOutputStream())) {
-			   wr.write( postData );
-			   wr.flush();
-			   wr.close();
-			}
 
-			int responseCode = conn.getResponseCode();
-			//System.out.println("POST Response Code :: " + responseCode);
-			
-			if (responseCode == HttpURLConnection.HTTP_OK) { //success
-				BufferedReader in = new BufferedReader(new InputStreamReader(
-						conn.getInputStream()));
-				String inputLine;
-				StringBuffer response = new StringBuffer();
+        // String urlParameters =
+        // "cards=[{\"rank\":\"5\",\"suit\":\"diamonds\"},{\"rank\":\"7\",\"suit\":\"diamonds\"},{\"rank\":\"7\",\"suit\":\"spades\"},{\"rank\":\"8\",\"suit\":\"diamonds\"},{\"rank\":\"9\",\"suit\":\"diamonds\"}]";
+        final byte[] postData = sB.toString().getBytes(StandardCharsets.UTF_8);
+        final int postDataLength = postData.length;
+        final String request = "http://rainman.leanpoker.org/rank";
+        URL url;
+        try {
+            url = new URL(request);
+            final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setInstanceFollowRedirects(false);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setRequestProperty("charset", "utf-8");
+            conn.setRequestProperty("Content-Length", Integer.toString(postDataLength));
+            conn.setUseCaches(false);
+            try (DataOutputStream wr = new DataOutputStream(conn.getOutputStream())) {
+                wr.write(postData);
+                wr.flush();
+                wr.close();
+            }
 
-				while ((inputLine = in.readLine()) != null) {
-					response.append(inputLine);
-				}
-				in.close();
+            final int responseCode = conn.getResponseCode();
+            // System.out.println("POST Response Code :: " + responseCode);
 
-				// print result
-				//System.out.println(response.toString());
-				//System.out.println(response.charAt(response.toString().lastIndexOf("rank")+6));
-				 int kell = Integer.parseInt(String.valueOf(response.charAt(response.toString().lastIndexOf("rank")+6)));
-				 //System.out.println(kell);
-				 return kell;
-			} else {
-				//System.out.println("POST request not worked");
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return -1;
-	}
+            if (responseCode == HttpURLConnection.HTTP_OK) { // success
+                final BufferedReader in = new BufferedReader(new InputStreamReader(
+                        conn.getInputStream()));
+                String inputLine;
+                final StringBuffer response = new StringBuffer();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                // print result
+                // System.out.println(response.toString());
+                // System.out.println(response.charAt(response.toString().lastIndexOf("rank")+6));
+                final int kell = Integer.parseInt(String.valueOf(response.charAt(response.toString().lastIndexOf("rank") + 6)));
+                // System.out.println(kell);
+                return kell;
+            } else {
+                // System.out.println("POST request not worked");
+            }
+        } catch (final IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }
