@@ -33,7 +33,7 @@ public class Player {
          */
 
         if (myCards.get(0).getRank().equals(myCards.get(1).getRank())) {
-            return 20;
+            return 30;
         }
         return 0;
     }
