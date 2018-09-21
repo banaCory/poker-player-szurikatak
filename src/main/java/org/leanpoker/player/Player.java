@@ -21,17 +21,6 @@ public class Player {
         final PlayerData playerMe = game.getPlayers().stream().filter(play -> play.getName().equals("szurikatak")).findFirst().get();
         final ArrayList<Card> myCards = playerMe.getHoleCards();
 
-        /*
-         * System.out.print(request.getAsString());
-         * final List<Integer> cards;
-         * final List<String> items = Arrays.asList(request.getAsString().split("\\s*,\\s*"));
-         * items.forEach(item -> {
-         * if(item.contains("rank")){
-         * cards.add(item.split(Integer.parseInt(item.split(":")));
-         * };
-         * });
-         */
-
         if (myCards.get(0).getRank().equals(myCards.get(1).getRank())) {
             return 30;
         }
