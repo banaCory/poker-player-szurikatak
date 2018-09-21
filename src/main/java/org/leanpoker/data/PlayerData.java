@@ -48,8 +48,8 @@ public class PlayerData {
         return hole_cards;
     }
 
-    public void setHoleCards(final ArrayList<Card> hole_Cards) {
-        this.hole_cards = hole_Cards;
+    public void setHoleCards(final ArrayList<Card> hole_cards) {
+        this.hole_cards = hole_cards;
     }
 
     public String getVersion() {
@@ -68,19 +68,19 @@ public class PlayerData {
         this.id = id;
     }
 
-	public ArrayList<Card> getHole_cards() {
-		return hole_cards;
-	}
+    public ArrayList<Card> getHole_cards() {
+        return hole_cards;
+    }
 
-	public void setHole_cards(ArrayList<Card> hole_cards) {
-		this.hole_cards = hole_cards;
-	}
+    public void setHole_cards(final ArrayList<Card> hole_cards) {
+        this.hole_cards = hole_cards;
+    }
 
-	public Long getTime_used() {
-		return time_used;
-	}
+    public Long getTime_used() {
+        return time_used;
+    }
 
-	public void setTime_used(Long time_used) {
-		this.time_used = time_used;
-	}
+    public void setTime_used(final Long time_used) {
+        this.time_used = time_used;
+    }
 }
