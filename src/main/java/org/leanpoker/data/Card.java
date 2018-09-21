@@ -5,24 +5,26 @@ public class Card {
         return rank;
     }
 
-    public void setRank(final String elso) {
-        this.rank = elso;
+    public void setRank(final String rank) {
+        this.rank = rank;
+        System.out.println("Rank: " + rank);
         try {
-            value = Integer.parseInt(elso);
+            value = Integer.parseInt(rank);
         } catch (final Exception e) {
-            if (elso.equals("J")) {
+            if (rank.equals("J")) {
                 value = 10;
             }
-            if (elso.equals("Q")) {
+            if (rank.equals("Q")) {
                 value = 11;
             }
-            if (elso.equals("K")) {
+            if (rank.equals("K")) {
                 value = 12;
             }
-            if (elso.equals("A")) {
+            if (rank.equals("A")) {
                 value = 13;
             }
         }
+        System.out.println("Value: " + value);
     }
 
     public String getSuit() {
@@ -33,8 +35,8 @@ public class Card {
         return value;
     }
 
-    public void setSuit(final String masodik) {
-        this.suit = masodik;
+    public void setSuit(final String suit) {
+        this.suit = suit;
     }
 
     String rank;
