@@ -28,10 +28,12 @@ public class Player {
 
             if (game.getCommunity_cards().isEmpty()) {
                 if (myCards.get(0).getRank().equals(myCards.get(1).getRank())) {
-                    return game.getBig_blind() * 10;
+                    if (myCards.get(0).getValue() > 9) {
+                        return 1000;
+                    }
                 }
                 if (myCards.get(0).getValue() + myCards.get(1).getValue() > 20) {
-                    return game.getBig_blind() * 10;
+                    return 250;
                 }
                 if (myCards.get(0).getValue() > 10 || myCards.get(1).getValue() > 10) {
                     return game.getBig_blind() * 5;
