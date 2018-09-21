@@ -37,7 +37,7 @@ public class Player {
             System.out.println("Asztal: " + game.getCommunity_cards());
 
             if (game.getCommunity_cards().isEmpty()) {
-                if (getRanking(myCards) > 0) {
+                if (myCards.get(0).getRank().equals(myCards.get(1).getRank())) {
                     if (myCards.get(0).is8orBigger()) {
                         return playerMe.getStack();
                     } else {

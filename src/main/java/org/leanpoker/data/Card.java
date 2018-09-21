@@ -42,11 +42,11 @@ public class Card {
     }
 
     public boolean is8orBigger() {
-        return value > 7;
+        return getValue() > 7;
     }
 
     public boolean is10orBigger() {
-        return value > 10;
+        return getValue() > 10;
     }
 
     String rank;
