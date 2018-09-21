@@ -29,7 +29,7 @@ public class Player {
             if (game.getCommunity_cards().isEmpty()) {
                 if (myCards.get(0).getRank().equals(myCards.get(1).getRank())) {
                     if (myCards.get(0).getValue() > 9) {
-                        return 1000;
+                        return playerMe.getStack();
                     }
                 }
                 if (myCards.get(0).getValue() + myCards.get(1).getValue() > 20) {
