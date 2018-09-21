@@ -65,7 +65,8 @@ public class Player {
                 System.out.println("RANKING: " + getRanking(cardlist));
 
                 if (getRanking(cardlist) > 1) {
-                    return game.getBig_blind() * 10;
+                    final Integer biggestBet = game.getPlayers().stream().max((a, b) -> a.getBet() - b.getBet()).get().getBet();
+                    return biggestBet > game.getBig_blind() * 10 ? biggestBet : game.getBig_blind() * 10;
                 }
             }
 
