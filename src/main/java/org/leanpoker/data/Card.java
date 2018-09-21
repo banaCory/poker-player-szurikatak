@@ -41,4 +41,9 @@ public class Card {
     String suit;
     Integer value;
 
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return "{\"rank\":\"" + rank + "\",\"suit\":\"" + suit + "\"}";
+    }
 }
