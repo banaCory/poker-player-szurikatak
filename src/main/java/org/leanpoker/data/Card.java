@@ -7,10 +7,30 @@ public class Card {
 
     public void setRank(final String elso) {
         this.rank = elso;
+        try {
+            value = Integer.parseInt(elso);
+        } catch (final Exception e) {
+            if (elso.equals("J")) {
+                value = 10;
+            }
+            if (elso.equals("Q")) {
+                value = 11;
+            }
+            if (elso.equals("K")) {
+                value = 12;
+            }
+            if (elso.equals("A")) {
+                value = 13;
+            }
+        }
     }
 
     public String getSuit() {
         return suit;
+    }
+
+    public Integer getValue() {
+        return value;
     }
 
     public void setSuit(final String masodik) {
@@ -19,5 +39,6 @@ public class Card {
 
     String rank;
     String suit;
+    Integer value;
 
 }

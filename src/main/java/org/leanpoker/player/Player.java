@@ -30,7 +30,10 @@ public class Player {
                 if (myCards.get(0).getRank().equals(myCards.get(1).getRank())) {
                     return game.getBig_blind() * 10;
                 }
-                if (Integer.parseInt(myCards.get(0).getRank()) + Integer.parseInt(myCards.get(1).getRank()) > 20) {
+                if (myCards.get(0).getValue() + myCards.get(1).getValue() > 20) {
+                    return game.getBig_blind() * 10;
+                }
+                if (myCards.get(0).getValue() > 10 || myCards.get(1).getValue() > 10) {
                     return game.getBig_blind() * 5;
                 }
             } else {
