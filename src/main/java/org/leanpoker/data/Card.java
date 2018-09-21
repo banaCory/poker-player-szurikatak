@@ -7,10 +7,9 @@ public class Card {
 
     public void setRank(final String rank) {
         this.rank = rank;
-        System.out.println("Rank: " + rank);
         try {
             value = Integer.parseInt(rank);
-        } catch (final Exception e) {
+        } catch (final NumberFormatException e) {
             if (rank.equals("J")) {
                 value = 10;
             }
@@ -24,7 +23,6 @@ public class Card {
                 value = 13;
             }
         }
-        System.out.println("Value: " + value);
     }
 
     public String getSuit() {

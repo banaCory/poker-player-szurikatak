@@ -26,10 +26,15 @@ public class Player {
             final PlayerData playerMe = game.getPlayers().stream().filter(play -> play.getName().equals("szurikatak")).findFirst().get();
             final ArrayList<Card> myCards = playerMe.getHoleCards();
 
+            System.out.println("Hand: " + myCards);
+            System.out.println("Asztal: " + game.getCommunity_cards());
+
             if (game.getCommunity_cards().isEmpty()) {
                 if (myCards.get(0).getRank().equals(myCards.get(1).getRank())) {
                     if (myCards.get(0).getValue() > 9) {
                         return playerMe.getStack();
+                    } else {
+                        return game.getBig_blind() * 10;
                     }
                 }
                 if (myCards.get(0).getValue() + myCards.get(1).getValue() > 20) {
