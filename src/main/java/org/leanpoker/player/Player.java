@@ -25,6 +25,8 @@ public class Player {
 
     public static int betRequest(final JsonElement request) {
 
+        System.out.println("VERSION:1.0");
+
         try {
 
             final Gson gson = new Gson();
@@ -37,7 +39,9 @@ public class Player {
             System.out.println("Asztal: " + game.getCommunity_cards());
 
             if (game.getCommunity_cards().isEmpty()) {
+                System.out.println("PRE_FLOP");
                 if (myCards.get(0).getRank().equals(myCards.get(1).getRank())) {
+                    System.out.println("PAIR IN HAND!!!");
                     if (myCards.get(0).is8orBigger()) {
                         return playerMe.getStack();
                     } else {
@@ -45,9 +49,11 @@ public class Player {
                     }
                 }
                 if (myCards.get(0).is10orBigger() && myCards.get(1).is10orBigger()) {
+                    System.out.println("BOTH 10 OR BIGGER");
                     return 250;
                 }
                 if (myCards.get(0).is10orBigger() || myCards.get(0).is10orBigger()) {
+                    System.out.println("ONE CAR 10 OR BIGGER");
                     return game.getBig_blind() * 5;
                 }
             } else {
@@ -55,6 +61,9 @@ public class Player {
                 cardlist.addAll(game.getCommunity_cards());
                 cardlist.addAll(myCards);
                 final Set<String> targetSet = new HashSet<>(cardlist.stream().map(card -> card.getRank()).collect(Collectors.toList()));
+
+                System.out.println("RANKING: " + getRanking(cardlist));
+
                 if (getRanking(cardlist) > 1) {
                     return game.getBig_blind() * 10;
                 }
