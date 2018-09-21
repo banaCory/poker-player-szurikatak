@@ -6,10 +6,11 @@ public class PlayerData {
     String name;
     Integer stack;
     String status;
-    Integer get;
+    Integer bet;
     ArrayList<Card> hole_cards;
+    Long time_used;
     String version;
-    Integer Id;
+    Integer id;
 
     public String getName() {
         return name;
@@ -35,12 +36,12 @@ public class PlayerData {
         this.status = status;
     }
 
-    public Integer getGet() {
-        return get;
+    public Integer getBet() {
+        return bet;
     }
 
-    public void setGet(final Integer get) {
-        this.get = get;
+    public void setBet(final Integer bet) {
+        this.bet = bet;
     }
 
     public ArrayList<Card> getHoleCards() {
@@ -60,10 +61,26 @@ public class PlayerData {
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public void setId(final Integer id) {
-        Id = id;
+        this.id = id;
     }
+
+	public ArrayList<Card> getHole_cards() {
+		return hole_cards;
+	}
+
+	public void setHole_cards(ArrayList<Card> hole_cards) {
+		this.hole_cards = hole_cards;
+	}
+
+	public Long getTime_used() {
+		return time_used;
+	}
+
+	public void setTime_used(Long time_used) {
+		this.time_used = time_used;
+	}
 }

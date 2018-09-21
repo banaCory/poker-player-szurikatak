@@ -7,12 +7,13 @@ public class GameState {
     String tournament_id;
     String game_id;
     Integer round;
-    Integer small_blind;
-    Integer orbits;
-    Integer dealer;
     ArrayList<Card> community_cards;
     Integer current_by_in;
     Integer pot;
+    Integer small_blind;
+    Integer big_blind;
+    Integer orbits;
+    Integer dealer;
 
     public ArrayList<PlayerData> getPlayers() {
         return players;
@@ -99,5 +100,53 @@ public class GameState {
         // TODO Auto-generated method stub
         return "p: " + round + " " + dealer;
     }
+
+	public String getTournament_id() {
+		return tournament_id;
+	}
+
+	public void setTournament_id(String tournament_id) {
+		this.tournament_id = tournament_id;
+	}
+
+	public String getGame_id() {
+		return game_id;
+	}
+
+	public void setGame_id(String game_id) {
+		this.game_id = game_id;
+	}
+
+	public ArrayList<Card> getCommunity_cards() {
+		return community_cards;
+	}
+
+	public void setCommunity_cards(ArrayList<Card> community_cards) {
+		this.community_cards = community_cards;
+	}
+
+	public Integer getCurrent_by_in() {
+		return current_by_in;
+	}
+
+	public void setCurrent_by_in(Integer current_by_in) {
+		this.current_by_in = current_by_in;
+	}
+
+	public Integer getSmall_blind() {
+		return small_blind;
+	}
+
+	public void setSmall_blind(Integer small_blind) {
+		this.small_blind = small_blind;
+	}
+
+	public Integer getBig_blind() {
+		return big_blind;
+	}
+
+	public void setBig_blind(Integer big_blind) {
+		this.big_blind = big_blind;
+	}
 
 }
