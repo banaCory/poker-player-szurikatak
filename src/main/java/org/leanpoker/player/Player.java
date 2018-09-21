@@ -38,16 +38,16 @@ public class Player {
 
             if (game.getCommunity_cards().isEmpty()) {
                 if (getRanking(myCards) > 0) {
-                    if (myCards.get(0).getValue() > 8) {
+                    if (myCards.get(0).is8orBigger()) {
                         return playerMe.getStack();
                     } else {
                         return game.getBig_blind() * 10;
                     }
                 }
-                if (myCards.get(0).getValue() + myCards.get(1).getValue() > 20) {
+                if (myCards.get(0).is10orBigger() && myCards.get(1).is10orBigger()) {
                     return 250;
                 }
-                if (myCards.get(0).getValue() > 10 || myCards.get(1).getValue() > 10) {
+                if (myCards.get(0).is10orBigger() || myCards.get(0).is10orBigger()) {
                     return game.getBig_blind() * 5;
                 }
             } else {

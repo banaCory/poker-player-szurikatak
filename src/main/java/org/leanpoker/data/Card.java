@@ -39,6 +39,14 @@ public class Card {
         this.suit = suit;
     }
 
+    public boolean is8orBigger() {
+        return value > 7;
+    }
+
+    public boolean is10orBigger() {
+        return value > 10;
+    }
+
     String rank;
     String suit;
     Integer value;
